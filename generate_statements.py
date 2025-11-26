@@ -383,7 +383,7 @@ def generate_transactions(year, month, start_balance):
 
 def main():
     # Create output directory
-    output_dir = "bank_statements"
+    output_dir = "statements/checking"
     os.makedirs(output_dir, exist_ok=True)
 
     # Starting balance (beginning of year)

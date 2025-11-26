@@ -72,7 +72,7 @@ This project creates a complete financial paper trail for fictional characters "
 
 ## Generated Documents
 
-The project generates the following PDF documents in the `bank_statements/` directory:
+The project generates the following PDF documents in the `statements/` directory:
 
 ### Checking Account Statements (12 files)
 - `DoE_Statement_2024_01_January.pdf` through `DoE_Statement_2024_12_December.pdf`
@@ -110,7 +110,7 @@ bobandjanedoe/
 ├── generate_retirement_statements.py      # Retirement account statement generator
 ├── requirements.txt                       # Python dependencies
 ├── venv/                                  # Python virtual environment
-└── bank_statements/                       # Output directory for all PDFs
+└── statements/                       # Output directory for all PDFs
     ├── DoE_Statement_2024_01_January.pdf
     ├── DoE_Statement_2024_02_February.pdf
     ├── ... (10 more monthly statements)
@@ -153,7 +153,7 @@ pip install -r requirements.txt
 
 ## Usage - Regenerating Documents
 
-All three generator scripts will create PDFs in the `bank_statements/` directory.
+All three generator scripts will create PDFs in the `statements/` directory.
 
 ### Generate Checking Account Statements
 

@@ -598,7 +598,7 @@ class Form1040(FPDF):
 
 
 def main():
-    output_dir = "bank_statements"
+    output_dir = "statements/tax"
     os.makedirs(output_dir, exist_ok=True)
 
     print("Generating 2023 Tax Return for Bob and Jane Doe...")

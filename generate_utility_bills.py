@@ -401,9 +401,12 @@ def generate_internet_bill(year, month):
 
 
 def main():
-    # Create output directory
-    output_dir = "bank_statements"
-    os.makedirs(output_dir, exist_ok=True)
+    # Create output directories
+    base_dir = "statements/utilities"
+    os.makedirs(f"{base_dir}/electric", exist_ok=True)
+    os.makedirs(f"{base_dir}/gas", exist_ok=True)
+    os.makedirs(f"{base_dir}/water", exist_ok=True)
+    os.makedirs(f"{base_dir}/internet", exist_ok=True)
 
     year = 2024
 
@@ -416,32 +419,32 @@ def main():
 
         # Electric bill
         pdf, amount, bill_date = generate_electric_bill(year, month)
-        filename = f"{output_dir}/Electric_Bill_{year}_{month:02d}_{month_name}.pdf"
+        filename = f"{base_dir}/electric/Electric_Bill_{year}_{month:02d}_{month_name}.pdf"
         pdf.output(filename)
         print(f"  {month_name} - Electric: ${amount:,.2f} (billed {bill_date.strftime('%m/%d/%Y')})")
 
         # Gas bill
         pdf, amount, bill_date = generate_gas_bill(year, month)
-        filename = f"{output_dir}/Gas_Bill_{year}_{month:02d}_{month_name}.pdf"
+        filename = f"{base_dir}/gas/Gas_Bill_{year}_{month:02d}_{month_name}.pdf"
         pdf.output(filename)
         print(f"  {month_name} - Gas:     ${amount:,.2f} (billed {bill_date.strftime('%m/%d/%Y')})")
 
         # Water bill
         pdf, amount, bill_date = generate_water_bill(year, month)
-        filename = f"{output_dir}/Water_Bill_{year}_{month:02d}_{month_name}.pdf"
+        filename = f"{base_dir}/water/Water_Bill_{year}_{month:02d}_{month_name}.pdf"
         pdf.output(filename)
         print(f"  {month_name} - Water:   ${amount:,.2f} (billed {bill_date.strftime('%m/%d/%Y')})")
 
         # Internet bill
         pdf, amount, bill_date = generate_internet_bill(year, month)
-        filename = f"{output_dir}/Internet_Bill_{year}_{month:02d}_{month_name}.pdf"
+        filename = f"{base_dir}/internet/Internet_Bill_{year}_{month:02d}_{month_name}.pdf"
         pdf.output(filename)
         print(f"  {month_name} - Internet: ${amount:.2f} (billed {bill_date.strftime('%m/%d/%Y')})")
 
         print()
 
     print("-" * 70)
-    print(f"Generated 48 utility bills (4 types × 12 months) in '{output_dir}/' directory")
+    print(f"Generated 48 utility bills (4 types × 12 months) in '{base_dir}/' directory")
 
 
 if __name__ == "__main__":

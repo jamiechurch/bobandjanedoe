@@ -433,7 +433,7 @@ def generate_jane_403b():
 
 
 def main():
-    output_dir = "bank_statements"
+    output_dir = "statements/retirement"
     os.makedirs(output_dir, exist_ok=True)
 
     print("Generating retirement account statements...")

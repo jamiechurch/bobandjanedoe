@@ -55,7 +55,16 @@ bobandjanedoe/
 ├── generate_utility_bills.py           # Utility bills generator (electric, gas, water, internet)
 ├── requirements.txt                    # Python dependencies (fpdf2)
 ├── README.md                          # Comprehensive documentation
-└── bank_statements/                   # Output directory for all PDFs
+└── statements/                   # Output directory for all PDFs
+    ├── checking/                      # Checking account statements (12 files)
+    ├── savings/                       # Savings account statements (12 files)
+    ├── retirement/                    # 401(k) and 403(b) statements (2 files)
+    ├── tax/                          # Form 1040 tax return (1 file)
+    └── utilities/                     # Utility bills (48 files)
+        ├── electric/                  # Electric bills (12 files)
+        ├── gas/                       # Gas bills (12 files)
+        ├── water/                     # Water bills (12 files)
+        └── internet/                  # Internet bills (12 files)
 ```
 
 ## Technology Stack
@@ -136,7 +145,7 @@ python generate_tax_return.py
 python generate_utility_bills.py
 ```
 
-All PDFs are output to the `bank_statements/` directory.
+All PDFs are output to the `statements/` directory in organized subdirectories by document type.
 
 ## Development Guidelines
 
@@ -174,7 +183,7 @@ To verify the generators work correctly:
 
 1. Ensure virtual environment is activated
 2. Run each generator script
-3. Check that PDFs are created in `bank_statements/` directory
+3. Check that PDFs are created in `statements/` directory
 4. Open a few PDFs to verify formatting and data accuracy
 5. Verify balance calculations make sense month-over-month
 
