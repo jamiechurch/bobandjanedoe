@@ -32,6 +32,18 @@ This is a **fictional financial data simulation project** that generates realist
    - Jane's TIAA 403(b): $98,750 → $116,447
    - Quarterly breakdowns and investment allocations
 
+4. **Tax Return (Form 1040)** (1 annual PDF for 2023)
+   - Married Filing Jointly tax return
+   - Combined W-2 income from both employers
+   - Standard deduction and tax calculations
+   - Federal withholding and refund/payment details
+
+5. **Utility Bills** (48 PDFs for 2024 - 4 types × 12 months)
+   - Electric bills (Nashville Electric Service) - $140-$210/month variable
+   - Gas bills (Piedmont Natural Gas) - $45-$85/month variable
+   - Water bills (Metro Water Services) - ~$65/month with sewer charges
+   - Internet bills (Comcast Xfinity) - $75/month fixed
+
 ## Project Structure
 
 ```
@@ -39,6 +51,8 @@ bobandjanedoe/
 ├── generate_statements.py              # Checking account generator
 ├── generate_savings_statements.py      # Savings account generator
 ├── generate_retirement_statements.py   # Retirement account generator
+├── generate_tax_return.py              # Form 1040 tax return generator
+├── generate_utility_bills.py           # Utility bills generator (electric, gas, water, internet)
 ├── requirements.txt                    # Python dependencies (fpdf2)
 ├── README.md                          # Comprehensive documentation
 └── bank_statements/                   # Output directory for all PDFs
@@ -76,6 +90,26 @@ bobandjanedoe/
 - Investment fund allocation tables
 - Administrator-specific branding (Fidelity green vs TIAA blue)
 
+### generate_tax_return.py
+- Generates Form 1040 (U.S. Individual Income Tax Return)
+- Married Filing Jointly filing status for 2023 tax year
+- Calculates total income from W-2 wages ($95k + $65k = $160k)
+- Includes interest income from savings account
+- Applies 2023 standard deduction ($27,700)
+- Calculates federal tax using 2023 MFJ tax brackets
+- Shows federal withholding and refund/payment calculation
+- Professional IRS form layout with disclaimer
+
+### generate_utility_bills.py
+- Generates monthly bills for 4 utility types (48 bills total)
+- **Electric** (Nashville Electric Service): Variable bills $140-$210 with seasonal usage patterns (higher in summer/winter)
+- **Gas** (Piedmont Natural Gas): Variable bills $45-$85 with winter heating usage
+- **Water** (Metro Water Services): Bills ~$65 including water usage and sewer charges
+- **Internet** (Comcast Xfinity): Fixed $75/month bills for 200 Mbps service
+- Bill amounts align with charges in checking account statements
+- Each bill includes usage details, billing period, due date, and charges breakdown
+- Color-coded company branding (blue for electric, orange for gas, green for water, black for internet)
+
 ## Usage Instructions
 
 Run each script independently to generate the respective PDFs:
@@ -94,6 +128,12 @@ python generate_savings_statements.py
 
 # Generate retirement statements
 python generate_retirement_statements.py
+
+# Generate tax return
+python generate_tax_return.py
+
+# Generate utility bills
+python generate_utility_bills.py
 ```
 
 All PDFs are output to the `bank_statements/` directory.
@@ -105,6 +145,8 @@ All PDFs are output to the `bank_statements/` directory.
 1. **Checking Account**: Edit `MONTHLY_EXPENSES` dict and income variables in `generate_statements.py`
 2. **Savings Account**: Modify `ACCOUNT_INFO["apy"]` and `MONTHLY_TRANSFER` in `generate_savings_statements.py`
 3. **Retirement**: Update `BOB_401K` and `JANE_403B` dictionaries in `generate_retirement_statements.py`
+4. **Tax Return**: Modify `INCOME` dict and `TAX_CONSTANTS_2023` in `generate_tax_return.py`
+5. **Utility Bills**: Update `UTILITIES` dict in `generate_utility_bills.py` to change bill amounts, billing dates, or company information
 
 ### If Adding New Features
 
@@ -142,17 +184,28 @@ To verify the generators work correctly:
 - No external API calls or network dependencies
 - Runs entirely locally
 
+## Important Notes on Utility Bills & Bank Statements
+
+The utility bill charges are designed to match the ranges in the checking account statements:
+- **Electric**: Generated with variable amounts ($140-$210) that align with `Nashville Electric Service` charges in bank statements
+- **Gas**: Generated with variable amounts ($45-$85) that align with `Piedmont Natural Gas` charges in bank statements
+- **Water**: Generated at ~$65 that aligns with `Metro Water Services` charges in bank statements
+- **Internet**: Generated at fixed $75 that aligns with `Internet - Comcast` charges in bank statements
+
+Note: Due to randomization, the exact amounts may differ slightly between the utility bills and bank statement transactions. For perfectly matching amounts, you would need to generate bank statements and utility bills with the same random seed or modify the generators to share transaction data.
+
 ## Potential Enhancements
 
 If extending this project, consider:
-- Adding W2 form generator (mentioned in README but not implemented)
+- Adding W-2 form generator (individual wage statements from employers)
 - Creating 1099-INT forms for savings interest
 - Generating credit card statements
-- Adding utility bill PDFs (electric, gas, water)
 - Creating paycheck stub PDFs
+- Adding state tax return (Tennessee has no state income tax)
 - Implementing a configuration file for easy parameter changes
 - Adding command-line arguments for year/month selection
 - Creating a web interface for on-demand generation
+- Synchronizing utility bill amounts with exact bank statement transactions
 
 ## Repository Information
 
