@@ -28,7 +28,7 @@ JANE_NET_PAY = 1982.39  # Per pay period
 MONTHLY_EXPENSES = {
     "fixed": [
         ("Mortgage w/Escrow - First TN Bank", 2215.27, 1),  # $375k @ 4%, 30yr + taxes/insurance
-        ("Auto Insurance - State Farm", 233.00, 5),
+        ("Auto Insurance - State Farm", 233.00, 5),  # F150 + Camry combined
         ("Life Insurance - Northwestern", 85.00, 10),
         ("Internet - Comcast", 75.00, 8),
         ("Cell Phone - Verizon", 140.00, 12),
